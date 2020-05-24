@@ -10,7 +10,11 @@ public class ReproScript : NetworkedBehaviour
 
     private void Start()
     {
-        input = new NetworkedVar<Vector2>(Vector2.zero);
+        //Initialize NetworkedVar with desired permissions
+        input = new NetworkedVar<Vector2>(new NetworkedVarSettings() {
+            ReadPermission = NetworkedVarPermission.Everyone,
+            WritePermission = NetworkedVarPermission.OwnerOnly
+		}, Vector2.zero);
     }
     private void Update()
     {
